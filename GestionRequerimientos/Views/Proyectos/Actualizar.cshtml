@@ -1,0 +1,68 @@
+﻿@model ProyectoViewModel
+@{
+    ViewBag.Title = "Actualizar";
+}
+
+<h2>
+    <a style="float:right; color:deepskyblue" href="@Url.Action("Index", "Proyectos")"><i class="fas fa-arrow-alt-circle-left"></i></a>
+    Actualizar Proyecto
+</h2>
+<hr />
+
+@using (Html.BeginForm("Actualizar", "Proyectos", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>ID del Proyecto</label>
+        @Html.TextBoxFor(m => m.proyecto.id_proyecto, new { @class = "form-control", @required = "required", @readonly = "readonly" })
+    </div>
+
+    <div class="form-group">
+        <label>Nombre</label>
+        @Html.TextBoxFor(m => m.proyecto.nombre, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion</label>
+        @Html.TextAreaFor(m => m.proyecto.descripcion, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Tiempo</label>
+        @Html.TextBoxFor(m => m.proyecto.tiempo, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Porcentaje</label>
+        @Html.TextBoxFor(m => m.proyecto.porcentaje, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Costo</label>
+        @Html.TextBoxFor(m => m.proyecto.costo, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de Registro</label>
+        @Html.TextBoxFor(m => m.proyecto.fecha_registro, new { @class = "form-control", @required = "required", @ReadOnly = "ReadOnly" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.proyecto.fecha_modificacion, new { @class = "form-control", @required = "required", @ReadOnly = "ReadOnly", @Value = @DateTime.Now.ToShortDateString(), @type = "hidden" })
+    </div>
+
+    <div class="form-group">
+        <label>Estado</label>
+        <select name="proyecto.nom_estado" class="form-control" required>
+            <option>Seleccione...</option>
+            @foreach (var estado in Model.Estados)
+            {
+                <option value="@estado.nom_estado" @(estado.nom_estado == Model.proyecto.nom_estado ? "selected":"")>@estado.descripcion</option>
+            }
+        </select>
+        @*@Html.TextBoxFor(m => m.proyecto.nom_estado, new { @class = "form-control", @Value ="ING", @ReadOnly = "ReadOnly", @type = "hidden"})*@
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn-success" />
+    </div>
+}

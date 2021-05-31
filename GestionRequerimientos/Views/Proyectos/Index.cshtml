@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PROYECTO>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    <a style="float:right; color:green" href="@Url.Action("Nuevo", "Proyectos")"><i class="fas fa-plus-circle"></i></a>
+    Listado de Proyectos</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th># Proyecto</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Tiempo</th>
+            <th>Porcentaje</th>
+            <th>Costo</th>
+            <th>Fecha Registro</th>
+            <th>Fecha Modificacion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var proyectos in Model) 
+        { 
+            <tr>
+                <td>@proyectos.id_proyecto</td>
+                <td>@proyectos.nombre</td>
+                <td>@proyectos.descripcion</td>
+                <td>@proyectos.tiempo</td>
+                <td>@proyectos.porcentaje</td>
+                <td>@proyectos.costo</td>
+                <td>@proyectos.fecha_registro</td>
+                <td>@proyectos.fecha_modificacion</td>
+                <td>@proyectos.ESTADO.id_estado</td>
+                <td style="width:50px">
+                    <a href="@Url.Action("Actualizar", "Proyectos", new { id = proyectos.id_proyecto })" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="@Url.Action("Detalle", "Proyectos", new { id = proyectos.id_proyecto })" title="Ver" style="color: deepskyblue"><i class="fas fa-list-ol"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

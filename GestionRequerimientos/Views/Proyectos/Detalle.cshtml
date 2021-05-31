@@ -1,0 +1,103 @@
+﻿@model ProyectoViewModel
+@{
+    ViewBag.Title = "Detalle Proyecto";
+}
+
+<h2>
+    <a style="float:right; color:deepskyblue" href="@Url.Action("Index", "Proyectos")"><i class="fas fa-arrow-alt-circle-left"></i></a>
+    Detalle Proyecto
+</h2>
+<hr />
+
+@if (Model.proyecto == null)
+{
+    <h4>El ID del proyecto no existe</h4>
+}
+else
+{
+    <div class="form-group">
+        <label>ID del Proyecto: </label>
+        @Model.proyecto.id_proyecto
+    </div>
+
+    <div class="form-group">
+        <label>Nombre: </label>
+        @Model.proyecto.nombre
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion: </label>
+        @Model.proyecto.descripcion
+    </div>
+
+    <div class="form-group">
+        <label>Tiempo: </label>
+        @Model.proyecto.tiempo
+    </div>
+
+    <div class="form-group">
+        <label>Porcentaje: </label>
+        @Model.proyecto.porcentaje
+    </div>
+
+    <div class="form-group">
+        <label>Costo: </label>
+        @Model.proyecto.costo
+    </div>
+
+    <div class="form-group">
+        <label>Fecha Registro: </label>
+        @Model.proyecto.fecha_registro
+    </div>
+
+    <div class="form-group">
+        <label>Fecha Modificacion: </label>
+        @Model.proyecto.fecha_modificacion
+    </div>
+
+    <div class="form-group">
+        <label>Estado: </label>
+        @Model.proyecto.ESTADO.descripcion
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th># Requerimiento</th>
+                <th>Proyecto</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Tiempo</th>
+                <th>Porcentaje</th>
+                <th>Costo</th>
+                <th>Fecha Registro</th>
+                <th>Fecha Modificacion</th>
+                <th>Estado</th>
+                <th>Tip. Requerimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var requerimientos in Model.Requerimientos)
+            {
+                <tr>
+                    <td>@requerimientos.id_requerimiento</td>
+                    <td>@requerimientos.id_proyecto</td>
+                    <td>@requerimientos.nombre</td>
+                    <td>@requerimientos.descripcion</td>
+                    <td>@requerimientos.tiempo</td>
+                    <td>@requerimientos.porcentaje</td>
+                    <td>@requerimientos.costo</td>
+                    <td>@requerimientos.fecha_registro</td>
+                    <td>@requerimientos.fecha_modificacion</td>
+                    <td>@requerimientos.ESTADO.id_estado</td>
+                    <td>@requerimientos.TIPO_REQUERIMIENTO.descripcion</td>
+                    <td style="width:50px">
+                        <a href="#" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="#" title="Ver" style="color: deepskyblue"><i class="fas fa-list-ol"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
