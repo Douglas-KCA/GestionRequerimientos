@@ -1,0 +1,35 @@
+﻿@model IEnumerable<PERSONA>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    <a style="float:right; color:green" href="@Url.Action("Nuevo", "Personas")"><i class="fas fa-plus-circle"></i></a>
+    Listado de Proyectos
+</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th># DPI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persona in Model)
+        {
+            <tr>
+                <td>@persona.dpi</td>
+                <td>@persona.nombre</td>
+                <td>@persona.apellido</td>
+                <td style="width:50px">
+                    <a href="@Url.Action("Actualizar", "Personas", new { dpi = persona.dpi })" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

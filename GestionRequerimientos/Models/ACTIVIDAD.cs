@@ -26,7 +26,7 @@ namespace GestionRequerimientos.Models
         [Key]
         [Column(Order = 3)]
         [StringLength(10)]
-        public string usuario { get; set; }
+        public string pk_usuario { get; set; }
 
         [Required]
         [StringLength(50)]
