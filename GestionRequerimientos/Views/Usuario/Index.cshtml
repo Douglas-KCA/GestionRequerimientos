@@ -1,0 +1,38 @@
+﻿@model IEnumerable<USUARIOS>
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>
+    <a style="float:right; color:green" href="@Url.Action("Nuevo", "Usuario")"><i class="fas fa-plus-circle"></i></a>
+    Listado de Usuarios
+</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#Usuario</th>
+            <th>Usuario</th>
+            <th>Password</th>
+            <th>DPI</th>
+            <th>ROL</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuarios in Model)
+        {
+            <tr>
+                <td>@usuarios.id_usuario</td>
+                <td>@usuarios.usuario</td>
+                <td>@usuarios.contrasena</td>
+                <td>@usuarios.dpi</td>
+                <td>@usuarios.rol</td>
+                <td style="width:50px">
+                    <a href="@Url.Action("Actualizar", "Usuario", new { id = usuarios.id_usuario })" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

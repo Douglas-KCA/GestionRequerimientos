@@ -13,5 +13,10 @@ namespace GestionRequerimientos.Controllers
         {
             return View();
         }
+
+        public ActionResult IndexUSR()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ROL>
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>
+    <a style="float:right; color:green" href="@Url.Action("Nuevo", "Roles")"><i class="fas fa-plus-circle"></i></a>
+    Listado de Roles
+</h2>
+<hr />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th># Rol</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roles in Model)
+        {
+            <tr>
+                <td>@roles.id_rol</td>
+                <td>@roles.rol1</td>
+                <td>@roles.descripcion</td>
+                <td>@roles.estado</td>
+                <td style="width:50px">
+                    <a href="@Url.Action("Actualizar", "roles", new { id = roles.id_rol })" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

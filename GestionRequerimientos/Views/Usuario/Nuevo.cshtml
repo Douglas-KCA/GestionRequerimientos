@@ -1,0 +1,51 @@
+﻿@model UsuarioViewModel
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>
+    <a style="float:right; color:deepskyblue" href="@Url.Action("Index", "Usuario")"><i class="fas fa-arrow-alt-circle-left"></i></a>
+    Nuevo Usuario
+</h2>
+<hr />
+
+@using (Html.BeginForm("Nuevo", "Usuario", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Usuario</label>
+        @Html.TextBoxFor(m => m.Usuarios.usuario, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Contrasena</label>
+        @Html.TextBoxFor(m => m.Usuarios.contrasena, new { @class = "form-control", @required = "required", @type = "password" })
+    </div>
+
+    <div class="form-group">
+        <label>DPI</label>
+        <select name="Usuarios.dpi" class="form-control" required>
+            <option>Seleccione...</option>
+            @foreach (var personas in Model.Personas)
+            {
+        <option value="@personas.dpi" )>@(personas.dpi + " - " + personas.nombre + " " + personas.apellido)</option>
+            }
+        </select>
+        @*@Html.TextBoxFor(m => m.proyecto.nom_estado, new { @class = "form-control", @Value ="ING", @ReadOnly = "ReadOnly", @type = "hidden"})*@
+    </div>
+
+    <div class="form-group">
+        <label>Rol</label>
+        <select name="Usuarios.rol" class="form-control" required>
+            <option>Seleccione...</option>
+            @foreach (var roles in Model.Roles)
+            {
+                <option value="@roles.rol1" )>@roles.rol1</option>
+            }
+        </select>
+        @*@Html.TextBoxFor(m => m.proyecto.nom_estado, new { @class = "form-control", @Value ="ING", @ReadOnly = "ReadOnly", @type = "hidden"})*@
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn-success" />
+    </div>
+}
