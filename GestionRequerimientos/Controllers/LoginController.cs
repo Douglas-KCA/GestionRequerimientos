@@ -27,17 +27,19 @@ namespace GestionRequerimientos.Controllers
 
                 if (viewmodel != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    //IF ROL
+                    if(viewmodel.rol == "ADM")
+                        return RedirectToAction("Index", "Home");
+                    else if (viewmodel.rol == "USR")
+                        return RedirectToAction("IndexUSR", "Home");
+                    else
+                        return View("Index");
                 }
                 else
-                {
-                    return View("Index");
-                }
+                        return View("Index");
             }
             else 
-            {
                 return View("Index");
-            }
         }
 
     }

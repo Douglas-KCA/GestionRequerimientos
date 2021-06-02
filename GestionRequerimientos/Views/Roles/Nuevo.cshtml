@@ -1,0 +1,32 @@
+﻿@model ROL
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>
+    <a style="float:right; color:deepskyblue" href="@Url.Action("Index", "Roles")"><i class="fas fa-arrow-alt-circle-left"></i></a>
+    Nuevo Rol
+</h2>
+<hr />
+
+@using (Html.BeginForm("Nuevo", "Roles", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Rol</label>
+        @Html.TextBoxFor(m => m.rol1, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion</label>
+        @Html.TextBoxFor(m => m.descripcion, new { @class = "form-control", @required = "required" })
+    </div>
+
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.estado, new { @class = "form-control", @required = "required", @Value = "1", @type = "hidden" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn-success" />
+    </div>
+}
+
