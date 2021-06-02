@@ -8,7 +8,7 @@ namespace GestionRequerimientos.Models
     public partial class RequerimientosContext : DbContext
     {
         public RequerimientosContext()
-            : base("name=RequerimientosContext")
+            : base("name=RequerimientosContext1")
         {
         }
 
@@ -36,7 +36,7 @@ namespace GestionRequerimientos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<ACTIVIDAD>()
-                .Property(e => e.usuario)
+                .Property(e => e.pk_usuario)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ACTIVIDAD>()
@@ -197,7 +197,7 @@ namespace GestionRequerimientos.Models
                 .HasPrecision(1, 0);
 
             modelBuilder.Entity<USUARIOS>()
-                .Property(e => e.usuario)
+                .Property(e => e.pk_usuario)
                 .IsUnicode(false);
 
             modelBuilder.Entity<USUARIOS>()

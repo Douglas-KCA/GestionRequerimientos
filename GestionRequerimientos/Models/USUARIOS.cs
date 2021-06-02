@@ -16,7 +16,7 @@ namespace GestionRequerimientos.Models
 
         [Key]
         [StringLength(10)]
-        public string usuario { get; set; }
+        public string pk_usuario { get; set; }
 
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

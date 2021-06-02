@@ -23,7 +23,7 @@ namespace GestionRequerimientos.Controllers
             if ((!string.IsNullOrEmpty(usuario)) && (!string.IsNullOrEmpty(pass)))
             {
                 var viewmodel = new USUARIOS();
-                viewmodel = context.USUARIOS.FirstOrDefault(x => x.usuario == usuario && x.contrasena == pass);
+                viewmodel = context.USUARIOS.FirstOrDefault(x => x.pk_usuario == usuario && x.contrasena == pass);
 
                 if (viewmodel != null)
                 {
