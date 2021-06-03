@@ -1,15 +1,19 @@
-﻿
+﻿@model IEnumerable<REQUERIMIENTO>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Requerimientos</h2>
+<h2>
+    <a style="float:right; color:green" href="@Url.Action("Nuevo", "Requerimientos")"><i class="fas fa-plus-circle"></i></a>
+    Listado de Requerimeintos
+</h2>
 <hr />
 
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th># Requerimiento</th>
+            <th># Proyecto</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Tiempo</th>
@@ -17,10 +21,32 @@
             <th>Costo</th>
             <th>Fecha Registro</th>
             <th>Fecha Modificacion</th>
-            <th>Proyecto</th>
             <th>Estado</th>
             <th>Tipo Requerimiento</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+    <tbody>
+        @foreach (var requerimiento in Model)
+        {
+            <tr>
+                <td>@requerimiento.id_requerimiento</td>
+                <td>@requerimiento.id_proyecto - @requerimiento.PROYECTO.nombre</td>
+                <td>@requerimiento.nombre</td>
+                <td>@requerimiento.descripcion</td>
+                <td>@requerimiento.tiempo</td>
+                <td>@requerimiento.porcentaje</td>
+                <td>@requerimiento.costo</td>
+                <td>@requerimiento.fecha_registro</td>
+                <td>@requerimiento.fecha_modificacion</td>
+                <td>@requerimiento.ESTADO.nom_estado</td>
+                <td>@requerimiento.TIPO_REQUERIMIENTO.descripcion</td>
+                <td style="width:50px">
+                    <a href="@Url.Action("Actualizar", "Requerimientos", new { idreq = requerimiento.id_requerimiento, idproy = requerimiento.id_proyecto })" title="Editar" style="color: green"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="@Url.Action("Detalle", "Requerimientos", new { idreq = requerimiento.id_requerimiento, idproy = requerimiento.id_proyecto })" title="Ver" style="color: deepskyblue"><i class="fas fa-list-ol"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
